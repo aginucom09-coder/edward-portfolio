@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edward N. Serrano — BSIT Student & Developer</title>
+<meta name="description" content="Portfolio of Edward N. Serrano, BS Information Technology student at Pampanga State University. Mobile and web projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0f14; --bg2:#121722; --card:#161c28; --line:#232b3b;
+    --text:#e7ebf3; --muted:#97a1b5; --accent:#4ade80; --accent2:#38bdf8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.15}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(12,15,20,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-family:"Space Grotesk";font-weight:700;font-size:1.15rem}
+  .logo span{color:var(--accent)}
+  .links{display:flex;gap:26px;font-size:.92rem;color:var(--muted)}
+  .links a:hover{color:var(--text)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 10px;font-size:1rem}
+
+  /* hero */
+  .hero{padding:96px 22px 80px}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--accent);border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.07);padding:5px 12px;border-radius:99px;margin-bottom:22px}
+  .tag i{width:7px;height:7px;border-radius:50%;background:var(--accent);display:block}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);margin-bottom:18px}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:1.1rem;color:var(--muted);max-width:620px;margin-bottom:32px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{padding:12px 22px;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--line);transition:.2s}
+  .btn.primary{background:var(--accent);color:#0b1a10;border-color:var(--accent)}
+  .btn.primary:hover{filter:brightness(1.1)}
+  .btn:not(.primary):hover{border-color:var(--muted)}
+  .hero-grid{display:flex;align-items:center;gap:48px}
+  .hero-grid>div{flex:1}
+  .avatar{width:230px;height:230px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 0 0 8px rgba(74,222,128,.08);flex:none}
+  .cert-link{color:var(--accent2);font-size:.88rem;font-weight:600}
+  .cert-link:hover{text-decoration:underline}
+  .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:40px;color:var(--muted);font-size:.9rem}
+
+  /* sections */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .eyebrow{color:var(--accent);font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+  section h2{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:28px}
+  .about p{color:var(--muted);max-width:720px;font-size:1.05rem}
+  .about p+p{margin-top:14px}
+
+  /* projects */
+  .projects{display:grid;gap:22px}
+  .project{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1.05fr 1fr;transition:.25s}
+  .project:hover{border-color:#34405a;transform:translateY(-2px)}
+  .shot{background:linear-gradient(135deg,#1b2333,#10151f);min-height:260px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;text-align:center;padding:20px;position:relative}
+  .shot img,.shot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .shot .ph{border:1px dashed #34405a;border-radius:10px;padding:16px 20px}
+  .pbody{padding:28px}
+  .pbody .kind{font-size:.8rem;color:var(--accent2);font-weight:600;margin-bottom:6px}
+  .pbody h3{font-size:1.4rem;margin-bottom:10px}
+  .pbody p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+  .pbody ul{color:var(--muted);font-size:.92rem;padding-left:18px;margin-bottom:18px}
+  .pbody li{margin-bottom:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.78rem;padding:4px 10px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:#c6cede}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .skill h3{font-size:1.02rem;margin-bottom:12px}
+
+  /* timeline */
+  .tl{border-left:2px solid var(--line);padding-left:24px;display:grid;gap:28px}
+  .tl-item{position:relative}
+  .tl-item::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+  .tl-item .when{font-size:.85rem;color:var(--accent)}
+  .tl-item h3{font-size:1.1rem;margin:2px 0 4px}
+  .tl-item p{color:var(--muted);font-size:.93rem}
+
+  /* contact */
+  .contact{text-align:center}
+  .contact p{color:var(--muted);max-width:520px;margin:0 auto 28px}
+  .contact .btns{justify-content:center}
+  footer{padding:30px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.85rem}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  @media (max-width:760px){
+    .links{display:none;position:absolute;top:62px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line)}
+    .links.open{display:flex}
+    .links a{padding:14px 22px;border-top:1px solid var(--line)}
+    .menu-btn{display:block}
+    .hero{padding:48px 22px 56px}
+    .hero-grid{flex-direction:column-reverse;align-items:flex-start;gap:28px}
+    .avatar{width:130px;height:130px}
+    .project{grid-template-columns:1fr}
+    .shot{min-height:200px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">edward<span>.</span>dev</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <div class="links" onclick="this.classList.remove('open')">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+ <div class="hero-grid">
+ <div>
+  <div class="tag"><i></i> Open to internships &amp; part-time roles</div>
+  <h1>Hi, I'm Edward.<br><span class="grad">I build mobile &amp; web apps.</span></h1>
+  <p>BS Information Technology student at Pampanga State University. I build apps that solve real problems for schools and businesses, from attendance tracking and grocery cashier systems to weather and inventory apps.</p>
+  <div class="btns">
+    <a href="#projects" class="btn primary">View my projects</a>
+    <a href="#contact" class="btn">Contact me</a>
+    <!-- Upload your resume PDF beside this file as resume.pdf -->
+    <a href="resume.pdf" class="btn" target="_blank">Download resume</a>
+  </div>
+  <div class="meta">
+    <span>📍 Mexico, Pampanga, Philippines</span>
+    <span>🎓 BSIT · Class of 2027</span>
+    <span>☁️ IBM-certified, Cloud Computing</span>
+  </div>
+ </div>
+ <img class="avatar" src="images/edward.jpg" alt="Edward N. Serrano">
+ </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap reveal">
+    <div class="eyebrow">About</div>
+    <h2>A bit about me</h2>
+    <p>I'm a third-year BSIT student at Pampanga State University (Bacolor). I enjoy turning everyday problems into working software, especially apps that people at school or work actually use.</p>
+    <p>For our capstone, our team built a mobile app that monitors teacher punctuality, which we tested with real students, teachers and admins and successfully defended in November 2026. I've also built a grocery inventory-to-cashier system, a shop item sorter, a weather app, and the manufacturing module of a class-wide business system. I use AI tools like ChatGPT and Claude every day to work faster, and I always double-check what they give me.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">Projects</div>
+    <h2 class="reveal">Things I've built</h2>
+
+    <div class="projects">
+      <article class="project reveal">
+        <div class="shot">
+          <!-- Replace with a screenshot or video, e.g.:
+               <img src="images/attendance.png" alt="Attendance app screenshot">
+               <video src="videos/attendance.mp4" autoplay muted loop playsinline></video> -->
+          <div class="ph">📱 Add a screenshot or demo video here</div>
+        </div>
+        <div class="pbody">
+          <div class="kind">Capstone Project · Mobile App · 2026</div>
+          <h3>Teacher Attendance Monitoring App</h3>
+          <p>A mobile app that tracks college teachers' punctuality by comparing their time-in against their class schedule.</p>
+          <ul>
+            <li>Three roles: admin monitors records, teachers register schedules and view their performance, a class monitor records the teacher's time-in</li>
+            <li>Alpha-tested with 3 IT industry professionals; beta-tested with students, teachers and admin at a partner school</li>
+            <li>Successfully defended at the final capstone defense, November 2026</li>
+          </ul>
+          <div class="chips"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="shot">
+          <div class="ph">🏭 Add a screenshot of the dashboard here</div>
+        </div>
+        <div class="pbody">
+          <div class="kind">Group Project · Web System · 2026</div>
+          <h3>Manufacturing Module — Integrated Business System</h3>
+          <p>The manufacturing module of a class-wide system for a clothing business, connected with the HR, Finance and Supply modules built by other groups.</p>
+          <ul>
+            <li>8 pages including a dashboard and production orders</li>
+            <li>Shares one cloud database with the other modules</li>
+            <li>Dark-theme UI matched to the system-wide design</li>
+          </ul>
+          <div class="chips"><span class="chip">PHP</span><span class="chip">TiDB Cloud</span><span class="chip">MySQL</span><span class="chip">HTML/CSS</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="shot"><div class="ph">🛒 Add a screenshot here</div></div>
+        <div class="pbody">
+          <div class="kind">Personal Project · Web System</div>
+          <h3>Grocery Inventory and Cashier System</h3>
+          <p>A grocery system that connects inventory to the cashier, so stock is tracked from receiving to checkout and every sale updates item counts.</p>
+          <div class="chips"><span class="chip">Inventory</span><span class="chip">Point of Sale</span><span class="chip">Web</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="shot"><div class="ph">🗂️ Add a screenshot here</div></div>
+        <div class="pbody">
+          <div class="kind">Personal Project · Application</div>
+          <h3>Automatic Item Sorter for a Shop</h3>
+          <p>An application that automatically sorts a shop's items by price, category or alphabetical order, so staff can find and organize products faster.</p>
+          <div class="chips"><span class="chip">Sorting</span><span class="chip">Application</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="shot"><div class="ph">🌦️ Add a screenshot here</div></div>
+        <div class="pbody">
+          <div class="kind">Personal Project · Mobile and Web</div>
+          <h3>Weather App</h3>
+          <p>Search any place in the world, with or without signal, and see the current weather there.</p>
+          <div class="chips"><span class="chip">Mobile</span><span class="chip">Web</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="shot"><div class="ph">🌐 You're looking at it</div></div>
+        <div class="pbody">
+          <div class="kind">Personal · Website</div>
+          <h3>Personal Portfolio</h3>
+          <p>This site: designed and built from scratch, mobile-friendly, and deployed on Vercel.</p>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Vercel</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow reveal">Skills</div>
+    <h2 class="reveal">What I work with</h2>
+    <div class="skills">
+      <div class="skill reveal"><h3>Mobile Development</h3><div class="chips"><span class=chip>Flutter</span><span class=chip>Dart</span><span class=chip>Firebase</span><span class=chip>Role-based apps</span></div></div>
+      <div class="skill reveal"><h3>Web Development</h3><div class="chips"><span class=chip>PHP</span><span class=chip>HTML</span><span class=chip>CSS</span><span class=chip>JavaScript</span><span class=chip>Dashboards</span><span class=chip>Point of Sale</span></div></div>
+      <div class="skill reveal"><h3>Databases &amp; Cloud</h3><div class="chips"><span class=chip>MySQL</span><span class=chip>TiDB Cloud</span><span class=chip>Firebase</span><span class=chip>IBM Cloud Certified</span></div></div>
+      <div class="skill reveal"><h3>Developer Tools</h3><div class="chips"><span class=chip>Git &amp; GitHub</span><span class=chip>VS Code</span><span class=chip>XAMPP</span><span class=chip>Vercel</span></div></div>
+      <div class="skill reveal"><h3>AI Tools</h3><div class="chips"><span class=chip>ChatGPT</span><span class=chip>Claude</span><span class=chip>Coding &amp; debugging</span><span class=chip>Fact-checking AI output</span></div></div>
+      <div class="skill reveal"><h3>Office &amp; Admin</h3><div class="chips"><span class=chip>Google Workspace</span><span class=chip>MS Word</span><span class=chip>Excel</span><span class=chip>PowerPoint</span><span class=chip>Data entry</span></div></div>
+      <div class="skill reveal"><h3>Testing &amp; Teamwork</h3><div class="chips"><span class=chip>Alpha &amp; beta testing</span><span class=chip>User feedback</span><span class=chip>Team projects</span></div></div>
+      <div class="skill reveal"><h3>Languages</h3><div class="chips"><span class=chip>English</span><span class=chip>Filipino</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow reveal">Education &amp; Certifications</div>
+    <h2 class="reveal">Learning &amp; credentials</h2>
+    <div class="tl">
+      <div class="tl-item reveal">
+        <div class="when">2023 – 2027 (expected)</div>
+        <h3>BS Information Technology</h3>
+        <p>Pampanga State University · Bacolor, Pampanga</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="when">November 2026</div>
+        <h3>Capstone Final Defense — Passed</h3>
+        <p>Teacher Attendance Monitoring App (Flutter + Firebase)</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="when">October 2026</div>
+        <h3>Cloud Computing Fundamentals — IBM SkillsBuild</h3>
+        <p><a class="cert-link" href="https://www.credly.com/badges/309e1c66-a769-49dc-ad30-79d8c456b795" target="_blank">Verify on Credly →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's work together</h2>
+    <p>I'm open to internships, part-time and remote roles in IT and development. Feel free to reach out.</p>
+    <div class="btns">
+      <!-- Palitan ng totoong email / links mo -->
+      <a href="mailto:aginucom09@gmail.com" class="btn primary">✉️ Email me</a>
+      <a href="https://github.com/your-username" target="_blank" class="btn">GitHub</a>
+      <a href="https://linkedin.com/in/your-profile" target="_blank" class="btn">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
